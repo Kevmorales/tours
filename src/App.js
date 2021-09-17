@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import Loading from './Loading'
 import Tours from './Tours'
-// ATTENTION!!!!!!!!!!
-// I SWITCHED TO PERMANENT DOMAIN
+
+
+
+// hämta all data från den länken
 const url = 'https://course-api.com/react-tours-project'
 function App() {
 
-  const [loading, setLoading] = useState(true);
+
+// setState för loading som visas när vi fetch
+  const [loading, setLoading] = useState(true); 
+// setState empty
   const [tours, setTours] = useState([]);
 
 
@@ -37,6 +42,8 @@ fetchTours();
 
 }, []);
 
+
+// om loading visa loading.js
   if(loading){
 
     return (
@@ -46,6 +53,8 @@ fetchTours();
     )
 
   }
+
+  // om tours data = 0 så visa nedan. fetchTours hämtar all tour data igen 
   if(tours.length === 0) {
 
     return (
@@ -53,7 +62,8 @@ fetchTours();
       <main>
         <div className="title">
           <h2>No tours left.</h2>
-          <button className="btn" onClick={fetchTours}>Refresh</button>
+        
+          <button className="btn" onClick={fetchTours}>Refresh</button> 
         </div>
       </main>
 
